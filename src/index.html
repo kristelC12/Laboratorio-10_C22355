@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <title>Laboratorio 2</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+ 
+    <!-- Web Components -->
+    <script type="module" src="components/posterCard.js"></script>
+    <script type="module" src="components/directionalSign.js"></script>
+    <script type="module" src="components/signBoard.js"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+ 
+      <!-- Poster anti-acoso -->
+      <poster-card
+        title-line1="LA SEDE"
+        title-line2="TE"
+        title-line3="ACOMPAÑA"
+        subtitle="El respeto no se negocia"
+        bold-subtitle="¡Pará ya de acosar!"
+        qr-src="images/qr-no-acoso.png"
+        qr-alt="QR No Acoso"
+        poster-src="images/no-acoso.png"
+        poster-alt="No acoso"
+        institution="UCR"
+      ></poster-card>
+ 
+      <!-- Panel de señalización -->
+      <sign-board institution="UCR">
+        <directional-sign label="Aulas 5, 6, 7"                      arrow-src="images/flecha.png"></directional-sign>
+        <directional-sign label="Apoyo Informático"                   arrow-src="images/flecha.png"></directional-sign>
+        <directional-sign label="Servidores"                          arrow-src="images/flecha.png"></directional-sign>
+        <directional-sign label="Laboratorios 1 y 2"                  arrow-src="images/flecha.png"></directional-sign>
+        <directional-sign label="Coordinación Informática Empresarial" arrow-src="images/flecha.png"></directional-sign>
+      </sign-board>
+ 
+    </div>
+  </body>
+</html>
+ 
