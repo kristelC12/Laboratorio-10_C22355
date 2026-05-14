@@ -28,8 +28,8 @@ class SignBoard extends HTMLElement {
       <section class="container-all" role="list" aria-label="Panel de señalización">
         <div class="container">
           <slot></slot>
-          <footer class="container-sign container-sign--curve" aria-label="Institución">
-            <h2 class="container-sign__institution">${institution}</h2>
+          <footer class="container-sign container-sign--curve" part="board-footer" aria-label="Institución">
+            <h2 class="container-sign__institution" part="institution">${institution}</h2>
           </footer>
         </div>
       </section>
@@ -47,6 +47,22 @@ class SignBoard extends HTMLElement {
 
         --color-blue: #005da4;
         --color-white: #ffffff;
+
+        /* Expose documented CSS custom properties with defaults */
+        --sb-font-family: 'Cinzel', serif;
+        --sb-bg: var(--color-white);
+        --sb-radius: 8px;
+        --sb-shadow: 0 4px 24px rgba(0,0,0,.18);
+        --sb-width: min(100%, 460px);
+        --sb-header-bg: var(--color-blue);
+        --sb-header-color: var(--color-white);
+        --sb-header-padding: 14px 20px;
+        --sb-header-font-size: 1rem;
+        --sb-footer-bg: var(--color-blue);
+        --sb-footer-color: var(--color-white);
+        --sb-footer-padding: 16px 20px;
+        --sb-footer-font-size: 1.3rem;
+        --sb-footer-letter-spc: 0.15em;
       }
 
       .container-all {
@@ -90,8 +106,8 @@ class SignBoard extends HTMLElement {
         height: max-content;
         flex: 1;
         margin-right: 0;
-        background-color: var(--color-blue);
-        border-bottom: 1px solid var(--color-white);
+        background-color: var(--sb-footer-bg, var(--color-blue));
+        border-bottom: 1px solid var(--sb-footer-color, var(--color-white));
       }
 
       .container-sign--curve {
@@ -121,11 +137,11 @@ class SignBoard extends HTMLElement {
         margin: 0;
         transform: translateX(-50%);
         line-height: 1;
-        color: var(--color-blue);
-        font-family: "Cinzel", "Times New Roman", serif;
-        font-size: 3.1rem;
+        color: var(--sb-footer-color, var(--color-blue));
+        font-family: var(--sb-font-family, "Cinzel", "Times New Roman", serif);
+        font-size: var(--sb-footer-font-size, 3.1rem);
         font-weight: 500;
-        letter-spacing: 0.02em;
+        letter-spacing: var(--sb-footer-letter-spc, 0.02em);
       }
     `;
   }

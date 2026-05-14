@@ -38,12 +38,17 @@ class DirectionalSign extends HTMLElement {
 
     this.shadowRoot.innerHTML = /* html */`
       <style>${DirectionalSign.#styles()}</style>
-      <div class="container-sign" role="listitem">
-        <h2 class="container-sign__label">${label}</h2>
-        ${arrowSrc
-          ? `<img class="arrow" src="${arrowSrc}" alt="${arrowAlt}">`
-          : `<span class="arrow arrow--fallback" aria-hidden="true">${arrowAlt}</span>`
-        }
+      <div class="container-sign" part="sign" role="listitem">
+        <slot name="label">
+          <h2 class="container-sign__label" part="label">${label}</h2>
+        </slot>
+
+        <slot name="arrow">
+          ${arrowSrc
+            ? `<img class="arrow" part="arrow" src="${arrowSrc}" alt="${arrowAlt}">`
+            : `<span class="arrow arrow--fallback" part="arrow-text" aria-hidden="true">${arrowAlt}</span>`
+          }
+        </slot>
       </div>
     `;
   }
@@ -65,35 +70,35 @@ class DirectionalSign extends HTMLElement {
         min-height: max-content;
         position: relative;
         flex: 1;
-        background-color: #005da4;
-        border-bottom: 1px solid #ffffff;
+        background-color: var(--ds-bg, #005da4);
+        border-bottom: 1px solid var(--ds-divider-color, #ffffff);
         padding: 14px 0;
       }
 
       .container-sign__label {
         margin: 0;
-        font-family: 'Cinzel', serif;
-        font-size: clamp(1rem, 1.6vw, 1.35rem);
-        font-weight: 700;
+        font-family: var(--ds-font-family, 'Cinzel', serif);
+        font-size: var(--ds-label-font-size, clamp(1rem, 1.6vw, 1.35rem));
+        font-weight: var(--ds-label-weight, 700);
         line-height: 1.1;
-        color: #ffffff;
+        color: var(--ds-label-color, #ffffff);
         flex: 1;
         padding-left: 1.15rem;
       }
 
       .arrow {
         flex-shrink: 0;
-        width: 24px;
+        width: var(--ds-arrow-size, 24px);
         height: auto;
         object-fit: contain;
         display: block;
         margin-left: auto;
-        margin-right: 18px;
+        margin-right: var(--ds-arrow-gap, 18px);
       }
 
       .arrow--fallback {
-        font-size: 1.5rem;
-        color: #ffffff;
+        font-size: var(--ds-arrow-font-size, 1.5rem);
+        color: var(--ds-label-color, #ffffff);
       }
     `;
   }
